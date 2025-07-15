@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa de Recorridos</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111b25;
+      font-family: 'Open Sans', sans-serif;
+      color: #fff;
+    }
+
+    .contenedor-mapa {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-image: url('styles/fotos/mapa r.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .marcador {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-color: beige;
+      border-radius: 50%;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: transform 0.2s ease;
+    }
+
+    .marcador:hover {
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+
+    .popup-contenido {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #1e2a38;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 300px;
+      z-index: 10;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .popup-contenido img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .popup-contenido audio {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .cerrar-btn {
+      background-color: #be4b4b;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      z-index: 5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor-mapa">
+
+    <div class="marcador" style="top: 48%; left: 53%;" onclick="mostrarPopup('Lechero', 'styles/fotos/retratos/bentura.JPG', 'styles/audios/entrevistas/bentura.mp3')"></div>
+
+    <div class="marcador" style="top: 55%; left: 60%;" onclick="mostrarPopup('Fotos', 'styles/fotos/retratos/chonita.png', 'styles/audios/entrevistas/bentura.mp3')"></div>
+
+    <div class="marcador" style="top: 40%; left: 45%;" onclick="mostrarPopup('Semillas', 'styles/fotos/retratos/juvenal.JPG', 'styles/audios/entrevistas/juvenal.mp3')"></div>
+
+    <div class="marcador" style="top: 30%; left: 45%;" onclick="mostrarPopup('Donas', 'styles/fotos/retratos/lorena.JPG', 'audios/plata.mp3')"></div>
+
+    <div class="marcador" style="top: 37%; left: 45%;" onclick="mostrarPopup('Fruta', 'styles/fotos/retratos/manuel.JPG', 'styles/audios/entrevistas/fruta.mp3')"></div>
+
+    <div class="overlay" onclick="cerrarPopup()"></div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup-contenido">
+      <h3 id="popup-titulo"></h3>
+      <img id="popup-imagen" src="" alt="Imagen">
+      <audio id="popup-audio" controls></audio>
+      <button class="cerrar-btn" onclick="cerrarPopup()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    function mostrarPopup(titulo, imagenSrc, audioSrc) {
+      document.getElementById('popup-titulo').textContent = titulo;
+      document.getElementById('popup-imagen').src = imagenSrc;
+      document.getElementById('popup-audio').src = audioSrc;
+
+      document.querySelector('.overlay').style.display = 'block';
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function cerrarPopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.querySelector('.overlay').style.display = 'none';
+      document.getElementById('popup-audio').pause();
+    }
+  </script>
+
+</body>
+</html>

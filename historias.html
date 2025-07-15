@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería de Fotos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/historias.css" />
+ 
+</head>
+<body class="historia">
+
+  <section class="galeria">
+    <figure>
+      <img src="styles/fotos/1.jpg" alt="Foto 1" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/2.jpg" alt="Foto 2" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/3.JPG" alt="Foto 3" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/4.JPG" alt="Foto 4" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/5.JPG" alt="Foto 5" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/6.JPG" alt="Foto 6" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/7.JPG" alt="Foto 7" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/8.JPG" alt="Foto 8" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/9.JPG" alt="Foto 9" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/10.JPG" alt="Foto 10" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/11.JPG" alt="Foto 11" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/12.JPG" alt="Foto 12" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/13.JPG" alt="Foto 13" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/14.JPG" alt="Foto 14" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/15.JPG" alt="Foto 15" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/16.jpg" alt="Foto 16" />
+      <figcaption></figcaption>
+    </figure>
+    <figure>
+      <img src="styles/fotos/17.jpg" alt="Foto 17" />
+      <figcaption></figcaption>
+    </figure>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <img src="" alt="Imagen ampliada" id="lightboxImg" />
+  </div>
+
+  <script>
+    // Animación de aparición suave para las figuras
+    document.querySelectorAll('.galeria figure').forEach((fig, i) => {
+      fig.style.opacity = 0;
+      fig.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        fig.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        fig.style.opacity = 1;
+        fig.style.transform = 'translateY(0)';
+      }, i * 150);
+    });
+
+    // Script para el lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeBtn');
+    const images = document.querySelectorAll('.galeria img');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      lightboxImg.alt = '';
+    });
+
+    // Cerrar lightbox al hacer clic fuera de la imagen
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        lightboxImg.alt = '';
+      }
+    });
+  </script>
+
+</body>
+</html>

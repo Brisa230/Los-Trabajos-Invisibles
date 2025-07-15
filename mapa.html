@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Los trabajos invisibles</title>
+  <link rel="stylesheet" href="styles/style.css"/>
+</head>
+<body>
+  <div class="contenedor">
+    <img src="styles/fotos/mapa pagina.png" id="mapaFondo" alt="Mapa">
+
+    <!-- Puntos de audio -->
+    <div class="punto animar" style="top:30%; left:45%; animation-delay:0s"
+         onclick="reproducirAudio('juvenal', this)"></div>
+    <div class="punto animar" style="top:55%; left:60%; animation-delay:2s"
+         onclick="reproducirAudio('otraHistoria', this)"></div>
+    <div class="punto animar" style="top:70%; left:35%; animation-delay:4s"
+         onclick="reproducirAudio('terceraHistoria', this)"></div>
+    <div class="punto animar" style="top:40%; left:55%; animation-delay:6s"
+         onclick="reproducirAudio('lorena', this)"></div>
+
+    <!-- Punto de video -->
+    <div class="punto animar"
+         style="top:85%; left:10%; animation-delay:8s"
+         onclick="mostrarVideo('styles/videos/zit.mp4')"></div>
+  </div>
+
+  <!-- Contenedor de video emergente -->
+  <div id="popupVideo" class="video-popup oculto">
+    <button class="cerrar" onclick="cerrarVideo()">✕</button>
+    <video id="videoPlayer" controls>
+      <source src="" type="video/mp4"/>
+    </video>
+  </div>
+
+  <script>
+    /* —–––– AUDIO —–––– */
+    const audios = {
+      juvenal: 'styles/audios/juvenal.mp3',
+      otraHistoria: 'styles/audios/chonita.mp3',
+      terceraHistoria: 'styles/audios/semillas.mp3',
+      lorena: 'styles/audios/lorena.mp3'
+    };
+
+    let audioPlayer = new Audio();
+    let puntoActivo = null;
+
+    function reproducirAudio(key, elemento) {
+      if (puntoActivo && puntoActivo !== elemento)
+        puntoActivo.classList.remove('activo');
+      puntoActivo = elemento;
+      puntoActivo.classList.add('activo');
+      audioPlayer.src = audios[key] || '';
+      audioPlayer.play();
+      audioPlayer.onended = () => puntoActivo && puntoActivo.classList.remove('activo');
+    }
+
+    /* —–––– VIDEO —–––– */
+    const videoPlayer = document.getElementById('videoPlayer');
+    const popupVideo = document.getElementById('popupVideo');
+
+    function mostrarVideo(ruta) {
+      videoPlayer.src = ruta;
+      popupVideo.classList.add('mostrar');
+      popupVideo.classList.remove('oculto');
+      videoPlayer.play();
+    }
+
+    function cerrarVideo() {
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+      popupVideo.classList.add('oculto');
+      popupVideo.classList.remove('mostrar');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* RESET GENERAL */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+/* MAPA */
+.contenedor {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+#mapaFondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: -1;
+}
+
+/* PUNTOS */
+.punto {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: rgba(131,175,222,0.7);
+  border-radius: 50%;
+  border: 1px solid white;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform .2s ease;
+}
+.punto:hover {
+  transform: scale(1.4);
+}
+.animar {
+  animation: parpadear 6s infinite ease-in-out;
+}
+@keyframes parpadear {
+  0%,20% { opacity:1; }
+  40%,80% { opacity:0; pointer-events:none; }
+  100% { opacity:1; pointer-events:auto; }
+}
+
+/* POPUP */
+.audio-popup {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background-color: #111;
+  padding:20px;
+  border:2px solid white;
+  border-radius:10px;
+  z-index:999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.popup-img {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+.cerrar {
+  position:absolute;
+  top:8px;
+  right:12px;
+  background:transparent;
+  border:none;
+  font-size:20px;
+  color:white;
+  cursor:pointer;
+  z-index:1000;
+}
+.oculto {
+  display:none;
+}
+
+/* Video emergente */
+.video-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  z-index: 999;
+  display: none;
+}
+
+.video-popup.mostrar {
+  display: block;
+}
+
+.video-popup video {
+  width: 80vw;
+  max-height: 60vh;
+  border-radius: 8px;
+}
+
+.cerrar {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}

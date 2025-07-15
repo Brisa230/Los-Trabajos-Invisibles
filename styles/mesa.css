@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('fotos/mesa.png');
+    font-family: 'Montserrat', sans-serif; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mesa {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.item {
+    position: absolute;
+    width: 250px;
+    height: auto;
+    z-index: 5;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.1);
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.polaroid {
+    background: white;
+    padding: 10px 10px 30px 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    transform: rotate(-2deg);
+    transition: transform 0.2s ease;
+    text-align: center;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.descripcion {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #222;
+    font-family: 'Patrick Hand', cursive; /
+}
+
+.radio-boton {
+    position: absolute;
+    bottom: 40px;
+    right: 100px;
+    width: 400px;
+    cursor: pointer;
+}
+
+.radio-boton img {
+    width: 100%; 
+    display: block;
+}
