@@ -12,35 +12,29 @@
 
     <!-- Puntos de audio -->
     <div class="punto animar" style="top:30%; left:45%; animation-delay:0s"
-         onclick="reproducirAudio('juvenal', this)"></div>
+         onclick="reproducirAudio('semillas', this)"></div>
     <div class="punto animar" style="top:55%; left:60%; animation-delay:2s"
-         onclick="reproducirAudio('otraHistoria', this)"></div>
+         onclick="reproducirAudio('Leche', this)"></div>
     <div class="punto animar" style="top:70%; left:35%; animation-delay:4s"
-         onclick="reproducirAudio('terceraHistoria', this)"></div>
-    <div class="punto animar" style="top:40%; left:55%; animation-delay:6s"
+         onclick="reproducirAudio('Fruta', this)"></div>
+    <div class="punto animar" style="top:40%; left:67%; animation-delay:6s"
          onclick="reproducirAudio('lorena', this)"></div>
+    <div class="punto animar" style="top:20%; left:55%; animation-delay:6s"
+         onclick="reproducirAudio('Rey', this)"></div>
+     <div class="punto animar" style="top:45%; left:15%; animation-delay:6s"
+         onclick="reproducirAudio('fotos', this)"></div>
 
-    <!-- Punto de video -->
-    <div class="punto animar"
-         style="top:85%; left:10%; animation-delay:8s"
-         onclick="mostrarVideo('styles/videos/zit.mp4')"></div>
-  </div>
-
-  <!-- Contenedor de video emergente -->
-  <div id="popupVideo" class="video-popup oculto">
-    <button class="cerrar" onclick="cerrarVideo()">✕</button>
-    <video id="videoPlayer" controls>
-      <source src="" type="video/mp4"/>
-    </video>
-  </div>
+     </div>
 
   <script>
     /* —–––– AUDIO —–––– */
     const audios = {
-      juvenal: 'styles/audios/juvenal.mp3',
-      otraHistoria: 'styles/audios/chonita.mp3',
-      terceraHistoria: 'styles/audios/semillas.mp3',
-      lorena: 'styles/audios/lorena.mp3'
+      semillas: 'styles/audios/semillas.mp3',
+      Leche: 'styles/audios/Bentura.wav',
+      Fruta: 'styles/audios/Miguel.wav',
+      lorena: 'styles/audios/lorena.mp3',
+      Rey: 'styles/audios/Reynaldo.wav',
+      fotos: 'styles/audios/chonita.mp3'
     };
 
     let audioPlayer = new Audio();
