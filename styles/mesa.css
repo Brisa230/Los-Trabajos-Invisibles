@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('fotos/background.jpg');
+  background-image: url('/styles/fotos/background.jpg');
   font-family: 'Montserrat', sans-serif;
   background-size: cover;
   background-position: center;
